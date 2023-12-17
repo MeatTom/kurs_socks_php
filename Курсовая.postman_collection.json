@@ -1,0 +1,587 @@
+{
+	"info": {
+		"_postman_id": "c7398721-394c-42d9-956e-0a2be9b37256",
+		"name": "Курсовая",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25896340"
+	},
+	"item": [
+		{
+			"name": "Регистрация",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fio",
+							"value": "Жека",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "1234567@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Admin123*",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "89697123335",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/register",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "1234567@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Admin123*",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/auth",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Данные о пользователе",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4JcT6gYTM2qnQbMm7UqpU6RIu8uR0saA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/user",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение почты",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4JcT6gYTM2qnQbMm7UqpU6RIu8uR0saA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"123@mail.com\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/email",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление товара",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "lKBfxuT8j5KTwr3LrpL4zg3q-_et_FA1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "St. Patrick socks",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5.32",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "300",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Крутые носки",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/meatt/Downloads/81CRr4NI4hL._AC_UL960_QL65_.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/tovars",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"tovars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление товара",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "lKBfxuT8j5KTwr3LrpL4zg3q-_et_FA1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/tovars/2",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"tovars",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение параметра товара",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "lKBfxuT8j5KTwr3LrpL4zg3q-_et_FA1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"St. Friday socks\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/tovars/5",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"tovars",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр одного товара",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/tovars/4",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"tovars",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр всех товаров",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/tovars",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"tovars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление товара в корзину",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Tql1IaQvqc8bdtVoPaQUYxRPApAKTIh9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"itemId\": 3,\r\n  \"amount\": 7\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/add_cart",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"add_cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление товара из корзины",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Tql1IaQvqc8bdtVoPaQUYxRPApAKTIh9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/del_cart/30",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"del_cart",
+						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр корзины",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Tql1IaQvqc8bdtVoPaQUYxRPApAKTIh9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/show_cart",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"show_cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение количества товара в корзине",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Tql1IaQvqc8bdtVoPaQUYxRPApAKTIh9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/amount_cart/29",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"amount_cart",
+						"29"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Оформление заказа",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Tql1IaQvqc8bdtVoPaQUYxRPApAKTIh9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": \"ул. Плесецкая 9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/order",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр всех заказов пользователя",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Tql1IaQvqc8bdtVoPaQUYxRPApAKTIh9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/orders",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр определённого заказа",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Tql1IaQvqc8bdtVoPaQUYxRPApAKTIh9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-kosinov.сделай.site/api/order/27",
+					"protocol": "https",
+					"host": [
+						"k-kosinov",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"api",
+						"order",
+						"27"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
