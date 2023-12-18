@@ -75,4 +75,10 @@ class Tovar extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Orders::className(), ['idItem' => 'id']);
     }
+    public function scenarios()
+{
+    $scenarios = parent::scenarios();
+    $scenarios['Update'] = ['name', 'description', 'price', 'stock']; 
+    return $scenarios;
+}
 }
