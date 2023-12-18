@@ -32,8 +32,8 @@ public function actionOrder()
 
     $requestData = Yii::$app->getRequest()->getBodyParams();
 
-    if (!isset($requestData['address'])) {
-        return $this->send(400, ['error' => ['code' => 400, 'message' => 'Bad Request: Missing "address" parameter']]);
+    if (!isset($requestData['address']) || empty($requestData['address'])) {
+        return $this->send(400, ['error' => ['code' => 400, 'message' => 'Bad Request: "address" parameter is empty']]);
     }
 
     $address = $requestData['address'];
