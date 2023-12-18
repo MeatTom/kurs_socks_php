@@ -1,7 +1,6 @@
 <?php
 
 namespace app\models;
-use yii\web\UploadedFile;
 
 use Yii;
 
@@ -16,7 +15,7 @@ use Yii;
  * @property string|null $image
  *
  * @property Cart[] $carts
- * @property OrderItems[] $orderItems
+ * @property Orders[] $orders
  */
 class Tovar extends \yii\db\ActiveRecord
 {
@@ -35,12 +34,10 @@ class Tovar extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'price', 'stock'], 'required'],
-            [['description'], 'string'],
+            [['description', 'image'], 'string'],
             [['price'], 'number'],
             [['stock'], 'integer'],
             [['name'], 'string', 'max' => 255],
-            [['image'], 'file', 'extensions' => ['jpg', 'bmp'], 'skipOnEmpty' => false],
-            [['image'], 'image', 'maxSize' => 2 * 1024 * 1024, 'skipOnEmpty' => false],
         ];
     }
 
@@ -70,25 +67,12 @@ class Tovar extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[OrderItems]].
+     * Gets query for [[Orders]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getOrderItems()
+    public function getOrders()
     {
-        return $this->hasMany(OrderItems::className(), ['tovarId' => 'id']);
+        return $this->hasMany(Orders::className(), ['idItem' => 'id']);
     }
-
-    public function beforeValidate(){
-        $this->image=UploadedFile::getInstanceByName('image');
-        return parent::beforeValidate();
-    }
-
-    public function scenarios()
-{
-    $scenarios = parent::scenarios();
-    $scenarios['Update'] = ['name', 'description', 'price', 'stock'];
-    return $scenarios;
-}
-
 }

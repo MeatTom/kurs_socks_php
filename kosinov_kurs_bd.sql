@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Дек 17 2023 г., 10:45
+-- Время создания: Дек 18 2023 г., 14:59
 -- Версия сервера: 10.11.4-MariaDB-1:10.11.4+maria~ubu2004
 -- Версия PHP: 8.1.21
 
@@ -33,6 +33,13 @@ CREATE TABLE `Cart` (
   `amount` int(11) NOT NULL,
   `userId` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `Cart`
+--
+
+INSERT INTO `Cart` (`id`, `itemId`, `amount`, `userId`) VALUES
+(31, 3, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -160,7 +167,7 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT для таблицы `Cart`
 --
 ALTER TABLE `Cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT для таблицы `Orders`
@@ -188,7 +195,8 @@ ALTER TABLE `Users`
 -- Ограничения внешнего ключа таблицы `Cart`
 --
 ALTER TABLE `Cart`
-  ADD CONSTRAINT `fk_cart_item` FOREIGN KEY (`itemId`) REFERENCES `Tovar` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_cart_item` FOREIGN KEY (`itemId`) REFERENCES `Tovar` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_cart_user` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `Orders`

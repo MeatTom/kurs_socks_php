@@ -13,6 +13,7 @@ use Yii;
  * @property int $userId
  *
  * @property Tovar $item
+ * @property Users $user
  */
 class Cart extends \yii\db\ActiveRecord
 {
@@ -33,6 +34,7 @@ class Cart extends \yii\db\ActiveRecord
             [['itemId', 'amount', 'userId'], 'integer'],
             [['amount', 'userId'], 'required'],
             [['itemId'], 'exist', 'skipOnError' => true, 'targetClass' => Tovar::className(), 'targetAttribute' => ['itemId' => 'id']],
+            [['userId'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['userId' => 'id']],
         ];
     }
 
@@ -57,5 +59,15 @@ class Cart extends \yii\db\ActiveRecord
     public function getItem()
     {
         return $this->hasOne(Tovar::className(), ['id' => 'itemId']);
+    }
+
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(Users::className(), ['id' => 'userId']);
     }
 }
