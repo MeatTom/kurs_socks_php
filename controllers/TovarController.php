@@ -74,6 +74,13 @@ public function actionUpdate($id)
 
     $requestData = Yii::$app->getRequest()->getBodyParams();
 
+    $allowedFields = ['name', 'description', 'price', 'stock'];
+    foreach ($requestData as $param => $value) {
+        if (!in_array($param, $allowedFields)) {
+            return $this->send(404, ['error' => ['code' => 404, 'message' => "Unknown param:'{$param}'"]]);
+        }
+    }
+
     $product->setScenario('Update');
 
     if ($product->load($requestData, '') && $product->save()) {
